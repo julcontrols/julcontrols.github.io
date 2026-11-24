@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JulControls — Herlan Julio Terceros · Portafolio y CV</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2222%22%20fill%3D%22%2313233A%22/%3E%3Cpath%20d%3D%22M16%2078%20C%2032%2078%2C%2040%2066%2C%2050%2051%22%20fill%3D%22none%22%20stroke%3D%22%23E39A5C%22%20stroke-width%3D%226.5%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2256.95%22%20cy%3D%2240.89%22%20r%3D%222.5%22%20fill%3D%22%23F5F2EB%22/%3E%3Ccircle%20cx%3D%2261.77%22%20cy%3D%2234.96%22%20r%3D%222.5%22%20fill%3D%22%23F5F2EB%22/%3E%3Ccircle%20cx%3D%2267.25%22%20cy%3D%2230.2%22%20r%3D%222.5%22%20fill%3D%22%23F5F2EB%22/%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2251%22%20r%3D%226.2%22%20fill%3D%22%23E39A5C%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2226%22%20r%3D%227.2%22%20fill%3D%22none%22%20stroke%3D%22%23F5F2EB%22%20stroke-width%3D%222.6%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2226%22%20r%3D%222.6%22%20fill%3D%22%23F5F2EB%22/%3E%3Cpath%20d%3D%22M90.5%2010.3%20Q91.34%2013.66%2094.7%2014.5%20Q91.34%2015.34%2090.5%2018.7%20Q89.66%2015.34%2086.3%2014.5%20Q89.66%2013.66%2090.5%2010.3Z%22%20fill%3D%22%23E39A5C%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Public+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: formal, quiet, evidence first — a professional dossier.
+   IDEA: a bound project-controls dossier with two tabs (portfolio / CV) and two editions (ES / EN).
+   PICTURE: the slides themselves, shown full width as plates; the CV as an A4 sheet.
+   COLOUR and TYPE: the portfolio's own navy, warm paper and copper; EB Garamond + Public Sans.
+   LAYOUT: sticky control bar, then one column of plates or the sheet, max 1240px. */
+:root{color-scheme:light dark;--bg:light-dark(#ECE8E0,#0F1A2B);--ink:light-dark(#13233A,#EDE7DC);--sub:light-dark(#5B5A55,#B9C3CF);--bar:light-dark(rgba(236,232,224,.92),rgba(15,26,43,.92));--line:light-dark(#D3CBBC,#2A3A52);--chip:light-dark(#FFFFFF,#1B2A40);--on:#13233A;--onink:#F5F2EB;--acc:#A8521C}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 'Public Sans',Arial,sans-serif;overflow-x:clip}
+.bar{position:sticky;top:0;z-index:5;background:var(--bar);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.barin{max-width:1240px;margin:0 auto;padding:12px max(4vw,16px);display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.who{display:flex;align-items:center;gap:12px;line-height:1.2}
+.who .logo{width:44px;height:44px;flex:none;border-radius:10px}
+.who .wt{display:flex;flex-direction:column}
+.who b{font-size:22px;font-weight:600;letter-spacing:-.2px}
+.who b i{font-style:normal;color:light-dark(#A8521C,#E39A5C)}
+.who span{font-size:14px;color:var(--sub)}
+.foot{max-width:1240px;margin:0 auto;padding:8px max(4vw,16px) 40px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;color:var(--sub);font-size:14px}
+.foot b{font-weight:600;color:var(--ink)}.foot b i{font-style:normal;color:light-dark(#A8521C,#E39A5C)}
+.foot em{font-family:'EB Garamond',Georgia,serif;font-size:19px;color:light-dark(#A8521C,#E39A5C)}
+.ctrls{display:flex;flex-wrap:wrap;gap:10px}
+.seg{display:inline-flex;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{font:600 15px/1 'Public Sans',Arial,sans-serif;color:var(--ink);background:none;border:0;border-radius:999px;min-height:40px;padding:0 18px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--on);color:var(--onink)}
+:root[data-theme=dark] .seg button[aria-pressed=true]{background:#EDE7DC;color:#13233A}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .seg button[aria-pressed=true]{background:#EDE7DC;color:#13233A}}
+.seg button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+main{max-width:1240px;margin:0 auto;padding:24px max(4vw,16px) 64px}
+.intro{font-size:15px;color:var(--sub);margin:4px 0 20px}
+.view{display:none}.view.on{display:block}
+.frame{margin:0 0 22px;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.12),0 10px 28px rgba(0,0,0,.12);background:#F5F2EB}
+.frame::after{content:attr(data-n);position:absolute;right:10px;bottom:8px;font-size:12px;color:#6B655A;background:rgba(255,255,255,.7);border-radius:6px;padding:1px 7px}
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;transform:scale(var(--s,.5))}
+.stage section{position:relative;width:1920px!important;height:1080px!important;overflow:hidden;isolation:isolate}
+.stage p,.stage h1,.stage h2,.stage h3,.stage li,.stage td,.stage th{margin:0}
+.stage ul,.stage ol{margin:0}
+.stage table{border-collapse:separate;border-spacing:0}
+.stage x-icon,.stage x-shape{display:block}
+.sheet{max-width:1000px;margin:0 auto;background:#fff;color:#44505E;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.12),0 12px 32px rgba(0,0,0,.14);padding:clamp(16px,4vw,44px)}
+.stage{
+  --ink: #13233A;
+  --paper: #F5F2EB;
+  --paper2: #EAE4D8;
+  --card: #FBF9F4;
+  --line: #D9D1C3;
+  --copper: #A8521C;
+  --copper-l: #E39A5C;
+  --copper-bg: #D98B4E;
+  --soft: #44505E;
+  --soft-d: #C9D3DE;
+  --muted: #6B655A;
+  --navy2: #1B2F4A;
+}
+.stage{ font-family: 'Public Sans', Arial, sans-serif; color: #13233A; }
+.stage section{
+  box-sizing: border-box;
+  padding: 128px 128px 160px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Public Sans', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+.stage section.alt{ background: var(--paper2); }
+.stage section.dark{ background: var(--ink); color: var(--paper); }
+.stage section.accent{ background: var(--copper-bg); }
+.stage section.nofoot{ padding: 128px; }
+.stage .head{ display: flex; flex-direction: column; gap: 10px; }
+.stage .eyebrow{ font-size: 24px; font-weight: 700; letter-spacing: 3px; line-height: 1.2; color: var(--copper); }
+.stage .title{ font-family: 'EB Garamond', Georgia, serif; font-size: 56px; font-weight: 600; line-height: 1.1; color: var(--ink); }
+.stage .es{ font-size: 26px; font-style: italic; line-height: 1.3; color: var(--soft); }
+.stage .dark .eyebrow{ color: var(--copper-l); }
+.stage .dark .title{ color: var(--paper); }
+.stage .dark .es{ color: var(--soft-d); }
+.stage .body{ font-size: 26px; line-height: 1.45; color: var(--soft); }
+.stage .foot{ position: absolute; left: 128px; bottom: 64px; width: 1664px; font-size: 24px; line-height: 1.2; color: var(--muted); }
+.stage .cap{ font-size: 24px; line-height: 1.35; color: var(--soft); }
+.stage .num{ font-family: 'EB Garamond', Georgia, serif; font-size: 72px; font-weight: 600; line-height: 1; color: var(--ink); }
+.stage .num-m{ font-family: 'EB Garamond', Georgia, serif; font-size: 56px; font-weight: 600; line-height: 1; color: var(--ink); }
+.stage .num-xl{ font-family: 'EB Garamond', Georgia, serif; font-size: 104px; font-weight: 600; line-height: 1; color: var(--copper); }
+.stage .tag{ font-size: 24px; font-weight: 700; letter-spacing: 2px; line-height: 1.2; color: var(--copper); }
+.stage .card{ background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 28px 32px; display: flex; flex-direction: column; gap: 8px; }
+.stage .ct{ font-size: 30px; font-weight: 700; line-height: 1.2; color: var(--ink); }
+.stage .ces{ font-size: 24px; font-style: italic; line-height: 1.3; color: var(--copper); }
+.stage .ctx{ font-size: 24px; line-height: 1.4; color: var(--soft); }
+.stage .kbar{ width: 56px; height: 6px; background: var(--copper); border-radius: 3px; }
+.stage .rise{ animation: rise 0.45s ease-out both; animation-delay: calc(var(--i) * 60ms); }
+@keyframes rise{
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stage .cover{ padding: 128px; justify-content: space-between; }
+.stage .cover-art{ position: absolute; left: 1180px; top: 128px; width: 612px; height: 824px; }
+.stage .cover-main{ width: 1000px; display: flex; flex-direction: column; gap: 22px; }
+.stage .name{ font-family: 'EB Garamond', Georgia, serif; font-size: 104px; font-weight: 600; line-height: 1.02; color: var(--paper); }
+.stage .role{ font-size: 30px; line-height: 1.35; color: var(--paper); }
+.stage .cover-meta{ width: 1000px; display: flex; flex-direction: column; gap: 8px; }
+.stage .meta{ font-size: 24px; line-height: 1.3; letter-spacing: 1px; color: var(--soft-d); }
+.stage .rule{ width: 120px; height: 4px; background: var(--copper-l); border-radius: 2px; }
+.stage .split{ display: flex; gap: 64px; }
+.stage .bio{ width: 820px; display: flex; flex-direction: column; gap: 24px; }
+.stage .kgrid{ flex: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.stage .ktile{ background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+.stage .tbl{ width: 1664px; font-size: 24px; line-height: 1.35; color: #44505E; }
+.stage .tbl th, .stage .tbl td{ padding: 12px 16px; }
+.stage .hrow{ background: #13233A; }
+.stage .hrow th{ color: #F5F2EB; text-align: left; }
+.stage .tbl td.c1{ color: #13233A; }
+.stage .tbl td.c3{ color: #A8521C; }
+.stage .bars{ display: flex; flex-direction: column; gap: 22px; }
+.stage .brow{ display: flex; align-items: center; gap: 32px; }
+.stage .blab{ width: 600px; display: flex; flex-direction: column; gap: 2px; }
+.stage .bt{ font-size: 24px; font-weight: 700; line-height: 1.25; color: var(--ink); }
+.stage .bs{ font-size: 24px; line-height: 1.25; color: var(--soft); }
+.stage .btrack{ flex: 1; display: flex; align-items: center; gap: 16px; }
+.stage .bar{ height: 40px; background: var(--ink); border-radius: 6px; }
+.stage .bar.big{ background: var(--copper); }
+.stage .bv{ font-size: 26px; font-weight: 700; color: var(--ink); white-space: nowrap; }
+.stage .tgrid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stage .tcard{ background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 6px; }
+.stage .tyear{ font-family: 'EB Garamond', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.1; color: var(--copper); }
+.stage .ttl{ font-size: 24px; font-weight: 700; line-height: 1.25; color: var(--ink); }
+.stage .ttx{ font-size: 24px; line-height: 1.35; color: var(--soft); }
+.stage .tcard.next{ background: var(--ink); border: 1px solid var(--ink); }
+.stage .tcard.next .tyear{ color: var(--copper-l); }
+.stage .tcard.next .ttl{ color: var(--paper); }
+.stage .tcard.next .ttx{ color: var(--soft-d); }
+.stage .agrid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.stage .ahead{ display: flex; align-items: center; gap: 14px; }
+.stage .aic{ width: 40px; height: 40px; color: var(--copper); }
+.stage .sgrid{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.stage .scol{ background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.stage .st{ font-size: 26px; font-weight: 700; line-height: 1.2; color: var(--ink); }
+.stage .si{ font-size: 24px; line-height: 1.3; color: var(--soft); }
+.stage .stack{ display: flex; flex-direction: column; gap: 24px; }
+.stage .pgrid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stage .pcard{ background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px; }
+.stage .band{ background: var(--ink); border-radius: 14px; padding: 20px 28px; display: flex; align-items: center; gap: 28px; }
+.stage .band-t{ width: 340px; font-size: 24px; font-weight: 700; line-height: 1.3; color: var(--copper-l); }
+.stage .band-x{ flex: 1; font-size: 24px; line-height: 1.4; color: var(--paper); }
+.stage .cleft{ width: 860px; display: flex; flex-direction: column; gap: 16px; }
+.stage .crole{ font-size: 24px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.stage .blist{ font-size: 24px; line-height: 1.4; color: var(--soft); padding-left: 32px; }
+.stage .blist li{ margin: 0 0 10px; }
+.stage .kgrid3{ flex: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.stage .ktile-s{ background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; }
+.stage .cgrid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.stage .tleft{ width: 620px; display: flex; flex-direction: column; gap: 12px; }
+.stage .tright{ flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.stage .divider{ height: 1px; background: var(--line); }
+.stage .label{ font-size: 24px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+.stage .srow{ display: flex; gap: 20px; align-items: flex-start; }
+.stage .snum{ width: 48px; font-family: 'EB Garamond', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.1; color: var(--copper); }
+.stage .stx{ flex: 1; font-size: 24px; line-height: 1.4; color: var(--soft); }
+.stage .divider-slide{ background: var(--ink); padding: 128px; justify-content: center; gap: 24px; }
+.stage .dv-photo{ position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+.stage .dv-shade{ position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: linear-gradient(90deg, rgba(19, 35, 58, 0.97) 0%, rgba(19, 35, 58, 0.9) 48%, rgba(19, 35, 58, 0.45) 100%); }
+.stage .dv-grid{ position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.stage .dv-part{ font-size: 24px; font-weight: 700; letter-spacing: 3px; line-height: 1.2; color: var(--copper-l); }
+.stage .dv-num{ font-family: 'EB Garamond', Georgia, serif; font-size: 104px; font-weight: 600; line-height: 1; color: var(--copper-l); }
+.stage .dv-title{ width: 1100px; font-family: 'EB Garamond', Georgia, serif; font-size: 72px; font-weight: 600; line-height: 1.08; color: var(--paper); }
+.stage .dv-es{ width: 1000px; font-size: 26px; font-style: italic; line-height: 1.35; color: var(--soft-d); }
+.stage .dv-list{ width: 1100px; font-size: 26px; line-height: 1.45; color: var(--paper); }
+.stage .dv-rule{ width: 120px; height: 4px; background: var(--copper-l); border-radius: 2px; }
+.stage .cright{ flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.stage .chart{ background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; }
+.stage .chart-t{ font-size: 24px; font-weight: 700; line-height: 1.25; color: var(--ink); }
+.stage .crow{ display: flex; align-items: center; gap: 16px; }
+.stage .clab2{ width: 120px; font-size: 24px; line-height: 1.2; color: var(--soft); }
+.stage .cbar{ height: 32px; border-radius: 6px; background: #9AA6B4; }
+.stage .cbar.act{ background: var(--copper); }
+.stage .cnum{ font-size: 24px; font-weight: 700; line-height: 1.2; color: var(--ink); white-space: nowrap; }
+.stage .kpair{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.stage .aleft{ width: 740px; display: flex; flex-direction: column; gap: 16px; }
+.stage .tbl-half{ width: 860px; }
+.stage .dgrid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.stage .statement{ justify-content: center; gap: 36px; }
+.stage .quote{ width: 1480px; font-family: 'EB Garamond', Georgia, serif; font-size: 72px; font-weight: 600; line-height: 1.12; color: var(--ink); }
+.stage .quote-es{ width: 1400px; font-size: 26px; font-style: italic; line-height: 1.4; color: var(--ink); }
+.stage .quote-by{ font-size: 24px; font-weight: 700; letter-spacing: 3px; line-height: 1.2; color: var(--ink); }
+.stage .qrule{ width: 120px; height: 4px; background: var(--ink); border-radius: 2px; }
+.stage .olist{ display: flex; flex-direction: column; }
+.stage .orow{ display: flex; gap: 28px; align-items: flex-start; padding: 16px 0; border-top: 1px solid var(--line); }
+.stage .onum{ width: 40px; font-family: 'EB Garamond', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.1; color: var(--copper); }
+.stage .oleft{ width: 660px; display: flex; flex-direction: column; gap: 2px; }
+.stage .ot{ font-size: 26px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+.stage .ox{ flex: 1; font-size: 24px; line-height: 1.4; color: var(--soft); }
+.stage .note{ font-size: 24px; font-style: italic; line-height: 1.4; color: var(--copper); }
+.stage .crgrid{ display: flex; gap: 28px; }
+.stage .crside{ width: 460px; }
+.stage .crmid{ flex: 1; }
+.stage .li{ font-size: 24px; line-height: 1.35; color: var(--soft); }
+.stage .contact{ padding: 128px; justify-content: space-between; }
+.stage .cgrid3{ display: flex; gap: 64px; }
+.stage .citem{ display: flex; flex-direction: column; gap: 6px; }
+.stage .clab{ font-size: 24px; font-weight: 700; letter-spacing: 3px; line-height: 1.2; color: var(--copper-l); }
+.stage .cval{ font-size: 30px; line-height: 1.3; color: var(--paper); }
+.stage .brand{ display: flex; align-items: center; gap: 24px; }
+.stage .brand-ic{ width: 88px; height: 88px; flex: none; }
+.stage .brand-tx{ display: flex; flex-direction: column; gap: 8px; }
+.stage .brand-wm{ font-size: 48px; font-weight: 600; line-height: 1; color: var(--paper); }
+.stage .brand-jul{ color: var(--copper-l); }
+.stage .brand-ds{ font-size: 24px; font-weight: 500; letter-spacing: 2px; line-height: 1.2; color: var(--soft-d); }
+.stage .brand-tl{ font-family: 'EB Garamond', Georgia, serif; font-size: 30px; font-style: italic; font-weight: 500; line-height: 1.2; color: var(--copper-l); }
+.cv{--ink:#13233A;--paper:#FFFFFF;--side:#F3EFE7;--line:#D9D1C3;--copper:#A8521C;--soft:#44505E;--muted:#6B655A;--cl:#E39A5C;--sd:#C9D3DE}
+.cv *{box-sizing:border-box;margin:0;padding:0}
+.cv{font-family:'Public Sans',Arial,sans-serif;font-size:8.3pt;line-height:1.38;color:var(--soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cv .top{background:var(--ink);border-radius:3mm;padding:6.5mm 7mm 5.5mm;color:#F5F2EB;display:flex;justify-content:space-between;align-items:flex-end;gap:6mm}
+.cv .name{font-family:'EB Garamond',Georgia,serif;font-weight:600;font-size:25pt;line-height:1.02;color:#F5F2EB}
+.cv .title{margin-top:2mm;font-weight:700;font-size:9.6pt;color:var(--cl);letter-spacing:.02em}
+.cv .sub{margin-top:1mm;font-size:8pt;color:var(--sd)}
+.cv .contact{text-align:right;font-size:7.8pt;line-height:1.55;color:#F5F2EB;white-space:nowrap}
+.cv .grid{display:grid;grid-template-columns:58mm 1fr;gap:6.5mm;margin-top:5mm}
+.cv .side .box{background:var(--side);border-radius:2.2mm;padding:3.6mm 3.8mm;margin-bottom:3mm;break-inside:avoid}
+.cv h2{font-size:7.4pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);margin-bottom:1.8mm}
+.cv .main h2{border-bottom:.3mm solid var(--line);padding-bottom:1.2mm;margin-bottom:2.4mm}
+.cv .fig{display:flex;gap:2.4mm;align-items:baseline;margin-bottom:1.6mm}
+.cv .fig .n{font-family:'EB Garamond',Georgia,serif;font-weight:600;font-size:14pt;color:var(--ink);flex:0 0 25mm;line-height:1}
+.cv .fig .t{font-size:7.4pt;line-height:1.3}
+.cv .side ul{list-style:none}
+.cv .side li{position:relative;padding-left:3mm;margin-bottom:1.1mm;font-size:7.7pt;line-height:1.33}
+.cv .side li:before{content:'';position:absolute;left:0;top:1.5mm;width:1.2mm;height:1.2mm;border-radius:50%;background:var(--copper)}
+.cv .side p{font-size:7.7pt;line-height:1.38}
+.cv .lang{margin-bottom:1.2mm;font-size:7.7pt}
+.cv .lang b, .cv .edu b{color:var(--ink);font-weight:700}
+.cv .edu{font-size:7.7pt;line-height:1.35}
+.cv .main section{margin-bottom:4mm}
+.cv .profile{font-size:8.5pt;line-height:1.45;color:var(--soft)}
+.cv .job{margin-bottom:3.1mm;break-inside:avoid}
+.cv .jh{display:flex;justify-content:space-between;gap:3mm;align-items:baseline}
+.cv .org{font-weight:700;color:var(--ink);font-size:8.9pt}
+.cv .date{font-weight:600;color:var(--copper);font-size:7.6pt;white-space:nowrap}
+.cv .place{font-size:7.4pt;color:var(--muted);margin-top:.2mm}
+.cv .role{font-style:italic;font-size:8pt;color:var(--ink);margin-top:.6mm}
+.cv .job ul{margin-top:1mm;padding-left:3.6mm}
+.cv .job li{margin-bottom:.6mm;font-size:8pt;line-height:1.36}
+.cv .job li::marker{color:var(--copper)}
+.cv .case{background:var(--side);border-left:1mm solid var(--copper);border-radius:1.5mm;padding:3mm 3.6mm;font-size:8.1pt;line-height:1.42;break-inside:avoid}
+.cv .refs{font-size:7.6pt;color:var(--muted);font-style:italic}
+.cvz{zoom:1.22}
+@media(max-width:960px){.cvz{zoom:1}}
+@media(max-width:700px){.cv .grid{grid-template-columns:minmax(0,1fr)}.cvz{zoom:1.15}.cv .top{flex-direction:column;align-items:flex-start}.cv .contact{text-align:left;white-space:normal}.cv .name{font-size:30px}}
+@media (prefers-reduced-motion:reduce){.stage *{animation:none!important}}
+</style></head><body>
+<header class="bar"><div class="barin">
+<div class="who"><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#13233A"/><path d="M16 78 C 32 78, 40 66, 50 51" fill="none" stroke="#E39A5C" stroke-width="6.5" stroke-linecap="round"/><circle cx="56.95" cy="40.89" r="2.5" fill="#F5F2EB"/><circle cx="61.77" cy="34.96" r="2.5" fill="#F5F2EB"/><circle cx="67.25" cy="30.2" r="2.5" fill="#F5F2EB"/><circle cx="50" cy="51" r="6.2" fill="#E39A5C"/><circle cx="80" cy="26" r="7.2" fill="none" stroke="#F5F2EB" stroke-width="2.6"/><circle cx="80" cy="26" r="2.6" fill="#F5F2EB"/><path d="M90.5 10.3 Q91.34 13.66 94.7 14.5 Q91.34 15.34 90.5 18.7 Q89.66 15.34 86.3 14.5 Q89.66 13.66 90.5 10.3Z" fill="#E39A5C"/></svg><div class="wt"><b><i>Jul</i>Controls</b><span data-es="Herlan Javier Julio Terceros · Control de proyectos, de la licitación al cierre" data-en="Herlan Javier Julio Terceros · Project controls, tender to close-out"></span></div></div>
+<div class="ctrls">
+<div class="seg" role="group" aria-label="Vista"><button type="button" id="b-port" data-view="portfolio" data-es="Portafolio" data-en="Portfolio"></button><button type="button" id="b-cv" data-view="cv">CV</button></div>
+<div class="seg" role="group" aria-label="Idioma / Language"><button type="button" id="b-es" data-lang="es">ES</button><button type="button" id="b-en" data-lang="en">EN</button></div>
+</div></div></header>
+<main>
+<p class="intro" id="intro"></p>
+<div class="view" id="v-portfolio-es"><figure class="frame" data-n="1"><div class="stage"><section class="dark cover" data-transition="fade">
+<svg class="cover-art" viewBox="0 0 612 824" width="612" height="824" aria-label="Decorative project-controls chart: planned versus actual S-curve over monthly progress bars">
+<rect x="0" y="0" width="612" height="824" rx="24" fill="#1B2F4A"/>
+<g stroke="#2A4263" stroke-width="1">
+<line x1="68" y1="40" x2="68" y2="776"/><line x1="136" y1="40" x2="136" y2="776"/><line x1="204" y1="40" x2="204" y2="776"/><line x1="272" y1="40" x2="272" y2="776"/><line x1="340" y1="40" x2="340" y2="776"/><line x1="408" y1="40" x2="408" y2="776"/><line x1="476" y1="40" x2="476" y2="776"/><line x1="544" y1="40" x2="544" y2="776"/>
+<line x1="40" y1="92" x2="572" y2="92"/><line x1="40" y1="184" x2="572" y2="184"/><line x1="40" y1="276" x2="572" y2="276"/><line x1="40" y1="368" x2="572" y2="368"/><line x1="40" y1="460" x2="572" y2="460"/><line x1="40" y1="552" x2="572" y2="552"/><line x1="40" y1="644" x2="572" y2="644"/>
+</g>
+<g fill="#2F4A6E">
+<rect x="60" y="722" width="22" height="18" rx="3"/><rect x="98" y="710" width="22" height="30" rx="3"/><rect x="136" y="694" width="22" height="46" rx="3"/><rect x="174" y="676" width="22" height="64" rx="3"/><rect x="212" y="658" width="22" height="82" rx="3"/><rect x="250" y="644" width="22" height="96" rx="3"/><rect x="288" y="636" width="22" height="104" rx="3"/><rect x="326" y="640" width="22" height="100" rx="3"/><rect x="364" y="652" width="22" height="88" rx="3"/><rect x="402" y="670" width="22" height="70" rx="3"/><rect x="440" y="688" width="22" height="52" rx="3"/><rect x="478" y="704" width="22" height="36" rx="3"/><rect x="516" y="718" width="22" height="22" rx="3"/>
+</g>
+<line x1="40" y1="776" x2="572" y2="776" stroke="#3A5578" stroke-width="2"/>
+<path d="M120 766 L130 776 L120 786 L110 776 Z" fill="#E39A5C"/>
+<path d="M300 766 L310 776 L300 786 L290 776 Z" fill="#E39A5C"/>
+<path d="M480 766 L490 776 L480 786 L470 776 Z" fill="#C9D3DE"/>
+<path d="M48 740 C 250 735, 330 140, 564 100" fill="none" stroke="#C9D3DE" stroke-width="3" stroke-dasharray="10 10" opacity="0.7"/>
+<path d="M48 740 C 240 738, 300 380, 420 318" fill="none" stroke="#E39A5C" stroke-width="7" stroke-linecap="round" stroke-dasharray="1200" stroke-dashoffset="0"><animate attributeName="stroke-dashoffset" from="1200" to="0" dur="0.9s" begin="0s"/></path>
+<circle cx="420" cy="318" r="12" fill="#E39A5C"/>
+<circle cx="420" cy="318" r="26" fill="none" stroke="#E39A5C" stroke-width="2" opacity="0.5"/>
+<path d="M456 271 Q458.2 279.8 467 282 Q458.2 284.2 456 293 Q453.8 284.2 445 282 Q453.8 279.8 456 271Z" fill="#E39A5C"/>
+</svg>
+<div class="brand">
+<svg class="brand-ic" viewBox="0 0 100 100" width="88" height="88" aria-label="JulControls"><rect width="100" height="100" rx="22" fill="#22395C"/><path d="M16 78 C 32 78, 40 66, 50 51" fill="none" stroke="#E39A5C" stroke-width="6.5" stroke-linecap="round"/><circle cx="56.95" cy="40.89" r="2.5" fill="#F5F2EB"/><circle cx="61.77" cy="34.96" r="2.5" fill="#F5F2EB"/><circle cx="67.25" cy="30.2" r="2.5" fill="#F5F2EB"/><circle cx="50" cy="51" r="6.2" fill="#E39A5C"/><circle cx="80" cy="26" r="7.2" fill="none" stroke="#F5F2EB" stroke-width="2.6"/><circle cx="80" cy="26" r="2.6" fill="#F5F2EB"/><path d="M90.5 10.3 Q91.34 13.66 94.7 14.5 Q91.34 15.34 90.5 18.7 Q89.66 15.34 86.3 14.5 Q89.66 13.66 90.5 10.3Z" fill="#E39A5C"/></svg>
+<div class="brand-tx"><p class="brand-wm"><span class="brand-jul">Jul</span>Controls</p><p class="brand-ds">CONTROL DE PROYECTOS · DE LA LICITACIÓN AL CIERRE</p></div>
+</div>
+<div class="cover-main">
+<p class="eyebrow">PORTAFOLIO · RESUMEN</p>
+<h1 class="name">Herlan Javier<br>Julio Terceros</h1>
+<div class="rule"></div>
+<p class="role">Control de proyectos · Compras · Contratos y reclamos · Licitaciones</p>
+</div>
+<div class="cover-meta">
+<p class="meta">Energía · Petróleo y gas · Salud · Telecomunicaciones · Infraestructura pública</p>
+<p class="meta">Bolivia · Perú · 2007–2026</p>
+</div>
+
+</section></div></figure>
+<figure class="frame" data-n="2"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">PERFIL</p>
+<h2 class="title">Diecinueve años convirtiendo la realidad de obra en cifras auditables</h2>
+</div>
+<div class="split">
+<div class="bio">
+<p class="body">Egresado de Ingeniería en Administración Petrolera (UTEPSA, Bolivia), radicado en Lima. Planifico, controlo y documento proyectos para que lo que se compra, se construye y se paga pueda demostrarse: cronogramas, metrados, órdenes de compra, valorizaciones y registros de cambios.</p>
+<p class="body">Mi trayectoria va desde proyectos EPC de petróleo y gas para TotalEnergies, Petrobras, Repsol y YPFB, pasando por hospitales y plantas industriales, hasta infraestructura pública peruana ejecutada bajo Obras por Impuestos.</p>
+</div>
+<div class="kgrid3">
+<div class="ktile-s rise" style="--i:1"><p class="num-m">19</p><p class="cap">años en proyectos industriales y de infraestructura, 2007–2026</p></div>
+<div class="ktile-s rise" style="--i:2"><p class="num-m">US$180M+</p><p class="cap">en contratos planificados y controlados</p></div>
+<div class="ktile-s rise" style="--i:3"><p class="num-m">5,000+</p><p class="cap">actividades programadas en P6 y MS Project</p></div>
+<div class="ktile-s rise" style="--i:4"><p class="num-m">1.69&#160;M</p><p class="cap">horas-hombre directas controladas en una planta de gas</p></div>
+<div class="ktile-s rise" style="--i:5"><p class="num-m">25+</p><p class="cap">licitaciones y propuestas en Bolivia y Perú</p></div>
+<div class="ktile-s rise" style="--i:6"><p class="num-m">6</p><p class="cap">especialidades: civil, mecánica, eléctrica, I&amp;C, telecom, comisionado</p></div>
+</div>
+</div>
+<p class="foot">Herlan J. Julio Terceros — Portafolio profesional 2026</p>
+
+</section></div></figure>
+<figure class="frame" data-n="3"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">TRAYECTORIA · ESCALA</p>
+<h2 class="title">Contratos que he planificado y controlado</h2>
+<p class="es">Valor de contrato, millones de US$</p>
+</div>
+<div class="bars">
+<div class="brow rise" style="--i:1"><div class="blab"><p class="bt">Planta de gas Incahuasi y Aquio</p><p class="bs">TECNA – Total · Serpetbol · 2014–16</p></div><div class="btrack"><div class="bar big" style="width:860px"></div><p class="bv">US$75M</p></div></div>
+<div class="brow rise" style="--i:2"><div class="blab"><p class="bt">Campamento y obra civil CPF Margarita</p><p class="bs">Repsol – Técnicas Reunidas · Bolinter · 2011</p></div><div class="btrack"><div class="bar" style="width:688px"></div><p class="bv">US$60M</p></div></div>
+<div class="brow rise" style="--i:3"><div class="blab"><p class="bt">Pozo ITU-X1 y línea ITU-4, EPC</p><p class="bs">Petrobras · Serpetbol · 2012–14</p></div><div class="btrack"><div class="bar" style="width:459px"></div><p class="bv">US$40M</p></div></div>
+<div class="brow rise" style="--i:4"><div class="blab"><p class="bt">Sistema de videovigilancia de Casma</p><p class="bs">Municipalidad de Casma · HANSA · 2026</p></div><div class="btrack"><div class="bar" style="width:68px"></div><p class="bv">US$5.9M</p></div></div>
+<div class="brow rise" style="--i:5"><div class="blab"><p class="bt">Montaje Illimani LP12, cemento Viacha</p><p class="bs">SOBOCE · HG Servicios · 2017–18</p></div><div class="btrack"><div class="bar" style="width:48px"></div><p class="bv">US$4.2M</p></div></div>
+<div class="brow rise" style="--i:6"><div class="blab"><p class="bt">Hospital de tercer nivel Villa Tunari</p><p class="bs">VAMED · HANSA · 2018–22</p></div><div class="btrack"><div class="bar" style="width:33px"></div><p class="bv">US$2.9M</p></div></div>
+<div class="brow rise" style="--i:7"><div class="blab"><p class="bt">Efluentes de refinería, fase III</p><p class="bs">YPFB Refinación · Vibrotec · 2016–17</p></div><div class="btrack"><div class="bar" style="width:21px"></div><p class="bv">US$1.8M</p></div></div>
+</div>
+<p class="foot">Fuente: CV y registros de proyecto. Casma convertido de S/ 20.1 M a S/ 3.40 por US$ (nov. 2026).</p>
+
+</section></div></figure>
+<figure class="frame" data-n="4"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">PLANIFICACIÓN Y CONTROL</p>
+<h2 class="title">Más de 5,000 actividades programadas en seis especialidades</h2>
+<p class="es">Cronogramas de obra y de licitación</p>
+</div>
+<table class="tbl">
+<tr class="hrow"><th style="width:28%">Proyecto</th><th style="width:36%">Especialidades</th><th style="width:36%">Cronograma y horas-hombre</th></tr>
+<tr><td class="c1">Planta de gas Incahuasi · TECNA – Total</td><td>Civil, estructuras metálicas, equipos, piping, precomisionado y comisionado</td><td class="c3">1,777 actividades, 5,094 vínculos (nivel III, P6); 1.69&#160;M HH directas</td></tr>
+<tr><td class="c1">EPC esferas de GLP · YPFB Refinación</td><td>Civil, piping, eléctrica, instrumentación, sistemas de control y seguridad</td><td class="c3">690 actividades en un cronograma EPC de 890 líneas, 2023–2025</td></tr>
+<tr><td class="c1">Hospital Trinidad (licitación) · HANSA</td><td>Instalaciones eléctricas</td><td class="c3">Cronograma de licitación de 1,751 actividades</td></tr>
+<tr><td class="c1">Videovigilancia Casma · HANSA</td><td>Estructuras, arquitectura, sanitarias, eléctricas y telecomunicaciones</td><td class="c3">845 tareas en 210 días; 677 partidas</td></tr>
+<tr><td class="c1">By-pass CPF Margarita · Repsol</td><td>Civil, mecánica y piping, E&amp;I, subcontratos</td><td class="c3">156 actividades en torno a una parada de planta</td></tr>
+<tr><td class="c1">Hospital Villa Tunari · VAMED</td><td>Eléctricas y corrientes débiles</td><td class="c3">132 actividades, 13 recursos, 3,360 h cargadas</td></tr>
+</table>
+<p class="foot">Cifras leídas de los archivos originales de P6 (.xer) y MS Project (.mpp); horas-hombre de los registros del proyecto.</p>
+
+</section></div></figure>
+<figure class="frame" data-n="5"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">COMPRAS · CASO</p>
+<h2 class="title">Control de suministros en la obra de Casma, Perú</h2>
+<p class="es">Obras por Impuestos · 2026</p>
+</div>
+<div class="split">
+<div class="cleft">
+<p class="body">Obras por Impuestos: HANSA financia y ejecuta un sistema de seguridad ciudadana para la Municipalidad de Casma y recupera la inversión con certificados CIPRL.</p>
+<p class="crole">Mi rol: Especialista en Planificación y Control (jul. 2026); luego, en Valorizaciones y Calidad para la financista (oct. 2026).</p>
+<ul class="blist">
+<li>Base de datos de OC que alimenta el control de suministros</li>
+<li>Entregas por paquete: cámaras, radios TETRA, GPON, despacho y UPS</li>
+<li>Puesta a tierra reespecificada con fichas de proveedores, sin costo extra</li>
+<li>Valorizaciones mensuales con anexos de evidencia</li>
+</ul>
+</div>
+<div class="kgrid3">
+<div class="ktile-s rise" style="--i:1"><p class="num-m">US$5.9M</p><p class="cap">inversión total del proyecto</p></div>
+<div class="ktile-s rise" style="--i:2"><p class="num-m">US$2.34M</p><p class="cap">suministros bajo órdenes de compra</p></div>
+<div class="ktile-s rise" style="--i:3"><p class="num-m">104</p><p class="cap">partidas en el plan de suministros</p></div>
+<div class="ktile-s rise" style="--i:4"><p class="num-m">297</p><p class="cap">líneas en 47 órdenes de compra</p></div>
+<div class="ktile-s rise" style="--i:5"><p class="num-m">5</p><p class="cap">paquetes de proveedores por semana</p></div>
+<div class="ktile-s rise" style="--i:6"><p class="num-m">80</p><p class="cap">pozos de tierra con fichas de proveedor</p></div>
+</div>
+</div>
+<p class="foot">Convenio OxI N° 01-2026-MPC · CUI 2533316 · 22 jul. 2026 – 16 feb. 2027 · US$ a S/ 3.40</p>
+
+</section></div></figure>
+<figure class="frame" data-n="6"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">CONTRATOS · CASO DE RECLAMO</p>
+<h2 class="title">Reclamo: subcontrato EPC de una planta de gas</h2>
+<p class="es">Bolivia · 2016–2017</p>
+</div>
+<div class="split">
+<div class="cleft">
+<p class="body">Subcontrato de obra civil, montaje mecánico y campamentos en un EPC de planta de gas. La ingeniería de detalle elevó las cantidades sobre el diseño licitado, y los suministros y planos tardíos del cliente alargaron el plazo.</p>
+<p class="crole">Mi rol: preparé el reclamo de principio a fin y lo sostuve durante un arbitraje de cuatro años.</p>
+<ul class="blist">
+<li>Base contractual: órdenes de cambio, ajuste de cantidades y prórroga de plazo</li>
+<li>Cronograma ejecutado (nivel III) y ruta crítica</li>
+<li>Recómputo de cantidades por especialidad contra planos aprobados</li>
+<li>Histogramas de personal que prueban la aceleración</li>
+<li>Conceptos: cantidades, permanencia, aceleración, alimentación, gastos generales</li>
+</ul>
+</div>
+<div class="cright">
+<div class="kpair">
+<div class="ktile-s rise" style="--i:1"><p class="num-m">989</p><p class="cap">días de plazo realmente ejecutado</p></div>
+<div class="ktile-s rise" style="--i:2"><p class="num-m">927,360</p><p class="cap">horas-hombre realmente trabajadas desde el mes 19</p></div>
+</div>
+<div class="kpair">
+<div class="ktile-s rise" style="--i:3"><p class="num-m">US$5.09M</p><p class="cap">mayor permanencia, US$15,684 por día</p></div>
+<div class="ktile-s rise" style="--i:4"><p class="num-m">US$24.9M</p><p class="cap">valor total del reclamo, con reajuste</p></div>
+</div>
+</div>
+</div>
+<p class="foot">Fuente: informe de impacto económico del reclamo, Rev. 6 (2017). Cifras reclamadas.</p>
+
+</section></div></figure>
+<figure class="frame" data-n="7"><div class="stage"><section class="alt">
+<div class="head">
+<p class="eyebrow">LICITACIONES Y COSTOS</p>
+<h2 class="title">Licitaciones e ingeniería de costos</h2>
+</div>
+<div class="split">
+<div class="tleft">
+<p class="num-xl">25+</p>
+<p class="cap">licitaciones y propuestas preparadas, 2020–2026, para clientes públicos y privados</p>
+<div class="divider"></div>
+<p class="label">Clientes y entidades licitados</p>
+<p class="cap">YPFB · YPFB Transporte · Aduana Nacional · Municipio de Warnes · Acería Las Lomas · PTAR Sipe Sipe · GORE Lambayeque · ENOSA · Mina Justa · Parque eólico Quercus · Nueva Rinconada · Parque industrial de Ilo</p>
+</div>
+<div class="tright">
+<div class="head"><h3 class="ct">Flujo de licitación asistido por IA</h3></div>
+<div class="srow rise" style="--i:1"><p class="snum">01</p><p class="stx"><b>Bases:</b> alcance, planos, plazos y exclusiones.</p></div>
+<div class="srow rise" style="--i:2"><p class="snum">02</p><p class="stx"><b>Extracción con IA:</b> resumen de alcance, riesgos, hitos y requisitos.</p></div>
+<div class="srow rise" style="--i:3"><p class="snum">03</p><p class="stx"><b>Base de precios:</b> cotizaciones reales, rendimientos y condiciones.</p></div>
+<div class="srow rise" style="--i:4"><p class="snum">04</p><p class="stx"><b>APU y presupuesto:</b> gastos generales, utilidad y contingencia.</p></div>
+<div class="srow rise" style="--i:5"><p class="snum">05</p><p class="stx"><b>Flujo de caja:</b> curva S financiera y escenarios.</p></div>
+<div class="srow rise" style="--i:6"><p class="snum">06</p><p class="stx"><b>Oferta:</b> propuesta técnica y económica lista para revisión.</p></div>
+</div>
+</div>
+<p class="foot">Herlan J. Julio Terceros — Portafolio profesional 2026</p>
+
+</section></div></figure>
+<figure class="frame" data-n="8"><div class="stage"><section class="nofoot">
+<div class="head">
+<p class="eyebrow">EXPEDIENTES TÉCNICOS Y CALIDAD</p>
+<h2 class="title">Ingeniería multidisciplinaria y expedientes técnicos</h2>
+<p class="es">Civil, eléctrica y mecánica</p>
+</div>
+<table class="tbl">
+<tr class="hrow"><th style="width:28%">Proyecto</th><th style="width:26%">Cliente</th><th style="width:46%">Entregado</th></tr>
+<tr><td class="c1">IESP Independencia, Huaraz (CUI 2194598)</td><td>Gobierno Regional de Áncash</td><td>Absolución punto por punto de un pedido de actualización tecnológica (6 equipos TI)</td></tr>
+<tr><td class="c1">COAR Amazonas</td><td>PRONIED, Ministerio de Educación</td><td>Diagnóstico de mobiliario y equipamiento; tablas rehechas y trazadas al inventario 2025</td></tr>
+<tr><td class="c1">Escuela Nacional de Archivística (CUI 2571990)</td><td>AGN, Lima</td><td>Modelado de cambio de diseño, metrados y presupuesto en S10</td></tr>
+<tr><td class="c1">FV para una planta farmacéutica</td><td>Ilender, Lima</td><td>Auditoría técnica y financiera: CAPEX/OPEX, VAN/TIR, matriz de riesgos</td></tr>
+<tr><td class="c1">Portones Villa Albina</td><td>A+BIM, Bolivia</td><td>Propuesta ganadora (nov. 2026); calidad, SSOMA, cronograma y planos</td></tr>
+</table>
+<p class="cap"><b>Además:</b> redes primaria y secundaria en Tacna · tanque de agua de 100 m³ en Sacaba (normativa boliviana) · encauzamiento del río Casma–Yaután · dossier de cierre del instituto José Pardo</p>
+
+</section></div></figure>
+<figure class="frame" data-n="9"><div class="stage"><section class="nofoot">
+<div class="head">
+<p class="eyebrow">IA APLICADA</p>
+<h2 class="title">IA aplicada: cómo trabajo con Claude</h2>
+<p class="es">Con reglas claras y firma humana</p>
+</div>
+<div class="split">
+<div class="aleft">
+<p class="label">Cómo gobierno el trabajo con IA</p>
+<ol class="blist">
+<li>Reglas escritas por entregable: metrados, APU, especificaciones, memorias de cálculo y términos de referencia.</li>
+<li>Sin datos supuestos: cada dato faltante se marca P1…Pn y se cierra en un registro de pendientes.</li>
+<li>La IA redacta, contrasta y traza; nunca produce cifras de diseño en memorias de cálculo.</li>
+<li>Un profesional responsable revisa y firma; la responsabilidad sigue siendo humana.</li>
+</ol>
+<p class="cap">Desde mayo de 2026, Claude trabaja conectado a mis carpetas de proyecto, Excel, Word, PDF, MS Project y AutoCAD.</p>
+<p class="cap"><strong>Inglés con apoyo de IA.</strong> Comprendo el inglés técnico y me apoyo en herramientas de IA para traducirlo y redactarlo.</p>
+</div>
+<table class="tbl tbl-half">
+<tr class="hrow"><th style="width:46%">Tarea hecha con IA</th><th style="width:54%">Resultado</th></tr>
+<tr><td class="c1">Revisión de expedientes</td><td class="c3">Observaciones por especialidad</td></tr>
+<tr><td class="c1">Actualización de planos y dibujo</td><td class="c3">Planos y detalles en AutoCAD</td></tr>
+<tr><td class="c1">Metrados y cálculos</td><td class="c3">Sustento línea por línea, revisado</td></tr>
+<tr><td class="c1">Especificaciones técnicas</td><td class="c3">Unificadas con control de cambios</td></tr>
+<tr><td class="c1">Base de datos de compras</td><td class="c3">OC vinculadas al cronograma</td></tr>
+<tr><td class="c1">Cronogramas</td><td class="c3">Macros VBA, fechas contractuales fijas</td></tr>
+<tr><td class="c1">Precios unitarios</td><td class="c3">Matriz de APU auditada</td></tr>
+<tr><td class="c1">Auditoría técnico-financiera</td><td class="c3">CAPEX/OPEX, VAN/TIR, riesgos</td></tr>
+</table>
+</div>
+
+</section></div></figure>
+<figure class="frame" data-n="10"><div class="stage"><section class="dark contact">
+<svg class="cover-art" viewBox="0 0 612 824" width="612" height="824" aria-label="Decorative project-controls chart: actual progress reaching the planned finish">
+<rect x="0" y="0" width="612" height="824" rx="24" fill="#1B2F4A"/>
+<g stroke="#2A4263" stroke-width="1">
+<line x1="68" y1="40" x2="68" y2="776"/><line x1="136" y1="40" x2="136" y2="776"/><line x1="204" y1="40" x2="204" y2="776"/><line x1="272" y1="40" x2="272" y2="776"/><line x1="340" y1="40" x2="340" y2="776"/><line x1="408" y1="40" x2="408" y2="776"/><line x1="476" y1="40" x2="476" y2="776"/><line x1="544" y1="40" x2="544" y2="776"/>
+<line x1="40" y1="92" x2="572" y2="92"/><line x1="40" y1="184" x2="572" y2="184"/><line x1="40" y1="276" x2="572" y2="276"/><line x1="40" y1="368" x2="572" y2="368"/><line x1="40" y1="460" x2="572" y2="460"/><line x1="40" y1="552" x2="572" y2="552"/><line x1="40" y1="644" x2="572" y2="644"/>
+</g>
+<line x1="40" y1="776" x2="572" y2="776" stroke="#3A5578" stroke-width="2"/>
+<path d="M48 740 C 250 735, 330 140, 564 100" fill="none" stroke="#C9D3DE" stroke-width="3" stroke-dasharray="10 10" opacity="0.7"/>
+<path d="M48 740 C 245 738, 320 160, 564 104" fill="none" stroke="#E39A5C" stroke-width="7" stroke-linecap="round"/>
+<circle cx="564" cy="104" r="12" fill="#E39A5C"/>
+<circle cx="564" cy="104" r="26" fill="none" stroke="#E39A5C" stroke-width="2" opacity="0.5"/>
+<path d="M596 57 Q597.8 64.2 605 66 Q597.8 67.8 596 75 Q594.2 67.8 587 66 Q594.2 64.2 596 57Z" fill="#E39A5C"/>
+<path d="M120 766 L130 776 L120 786 L110 776 Z" fill="#E39A5C"/>
+<path d="M300 766 L310 776 L300 786 L290 776 Z" fill="#E39A5C"/>
+<path d="M480 766 L490 776 L480 786 L470 776 Z" fill="#E39A5C"/>
+</svg>
+<div class="brand">
+<svg class="brand-ic" viewBox="0 0 100 100" width="88" height="88" aria-label="JulControls"><rect width="100" height="100" rx="22" fill="#22395C"/><path d="M16 78 C 32 78, 40 66, 50 51" fill="none" stroke="#E39A5C" stroke-width="6.5" stroke-linecap="round"/><circle cx="56.95" cy="40.89" r="2.5" fill="#F5F2EB"/><circle cx="61.77" cy="34.96" r="2.5" fill="#F5F2EB"/><circle cx="67.25" cy="30.2" r="2.5" fill="#F5F2EB"/><circle cx="50" cy="51" r="6.2" fill="#E39A5C"/><circle cx="80" cy="26" r="7.2" fill="none" stroke="#F5F2EB" stroke-width="2.6"/><circle cx="80" cy="26" r="2.6" fill="#F5F2EB"/><path d="M90.5 10.3 Q91.34 13.66 94.7 14.5 Q91.34 15.34 90.5 18.7 Q89.66 15.34 86.3 14.5 Q89.66 13.66 90.5 10.3Z" fill="#E39A5C"/></svg>
+<div class="brand-tx"><p class="brand-wm"><span class="brand-jul">Jul</span>Controls</p><p class="brand-tl">Cada costo, sustentado.</p></div>
+</div>
+<div class="cover-main">
+<p class="eyebrow">GRACIAS</p>
+<h1 class="name">Herlan Javier<br>Julio Terceros</h1>
+<div class="rule"></div>
+<p class="role">Disponible para control de proyectos, compras y evidencia contractual en Latinoamérica y a nivel internacional.</p>
+</div>
+<div class="cgrid3">
+<div class="citem"><p class="clab">CORREO</p><p class="cval">hjuliojt@gmail.com</p></div>
+<div class="citem"><p class="clab">IDIOMAS</p><p class="cval">Español · inglés con apoyo de IA</p></div>
+<div class="citem"><p class="clab">RESIDENCIA</p><p class="cval">Lima, Perú</p></div>
+</div>
+
+</section></div></figure></div>
+<div class="view" id="v-portfolio-en"><figure class="frame" data-n="1"><div class="stage"><section class="dark cover" data-transition="fade">
+<svg class="cover-art" viewBox="0 0 612 824" width="612" height="824" aria-label="Decorative project-controls chart: planned versus actual S-curve over monthly progress bars">
+<rect x="0" y="0" width="612" height="824" rx="24" fill="#1B2F4A"/>
+<g stroke="#2A4263" stroke-width="1">
+<line x1="68" y1="40" x2="68" y2="776"/><line x1="136" y1="40" x2="136" y2="776"/><line x1="204" y1="40" x2="204" y2="776"/><line x1="272" y1="40" x2="272" y2="776"/><line x1="340" y1="40" x2="340" y2="776"/><line x1="408" y1="40" x2="408" y2="776"/><line x1="476" y1="40" x2="476" y2="776"/><line x1="544" y1="40" x2="544" y2="776"/>
+<line x1="40" y1="92" x2="572" y2="92"/><line x1="40" y1="184" x2="572" y2="184"/><line x1="40" y1="276" x2="572" y2="276"/><line x1="40" y1="368" x2="572" y2="368"/><line x1="40" y1="460" x2="572" y2="460"/><line x1="40" y1="552" x2="572" y2="552"/><line x1="40" y1="644" x2="572" y2="644"/>
+</g>
+<g fill="#2F4A6E">
+<rect x="60" y="722" width="22" height="18" rx="3"/><rect x="98" y="710" width="22" height="30" rx="3"/><rect x="136" y="694" width="22" height="46" rx="3"/><rect x="174" y="676" width="22" height="64" rx="3"/><rect x="212" y="658" width="22" height="82" rx="3"/><rect x="250" y="644" width="22" height="96" rx="3"/><rect x="288" y="636" width="22" height="104" rx="3"/><rect x="326" y="640" width="22" height="100" rx="3"/><rect x="364" y="652" width="22" height="88" rx="3"/><rect x="402" y="670" width="22" height="70" rx="3"/><rect x="440" y="688" width="22" height="52" rx="3"/><rect x="478" y="704" width="22" height="36" rx="3"/><rect x="516" y="718" width="22" height="22" rx="3"/>
+</g>
+<line x1="40" y1="776" x2="572" y2="776" stroke="#3A5578" stroke-width="2"/>
+<path d="M120 766 L130 776 L120 786 L110 776 Z" fill="#E39A5C"/>
+<path d="M300 766 L310 776 L300 786 L290 776 Z" fill="#E39A5C"/>
+<path d="M480 766 L490 776 L480 786 L470 776 Z" fill="#C9D3DE"/>
+<path d="M48 740 C 250 735, 330 140, 564 100" fill="none" stroke="#C9D3DE" stroke-width="3" stroke-dasharray="10 10" opacity="0.7"/>
+<path d="M48 740 C 240 738, 300 380, 420 318" fill="none" stroke="#E39A5C" stroke-width="7" stroke-linecap="round" stroke-dasharray="1200" stroke-dashoffset="0"><animate attributeName="stroke-dashoffset" from="1200" to="0" dur="0.9s" begin="0s"/></path>
+<circle cx="420" cy="318" r="12" fill="#E39A5C"/>
+<circle cx="420" cy="318" r="26" fill="none" stroke="#E39A5C" stroke-width="2" opacity="0.5"/>
+<path d="M456 271 Q458.2 279.8 467 282 Q458.2 284.2 456 293 Q453.8 284.2 445 282 Q453.8 279.8 456 271Z" fill="#E39A5C"/>
+</svg>
+<div class="brand">
+<svg class="brand-ic" viewBox="0 0 100 100" width="88" height="88" aria-label="JulControls"><rect width="100" height="100" rx="22" fill="#22395C"/><path d="M16 78 C 32 78, 40 66, 50 51" fill="none" stroke="#E39A5C" stroke-width="6.5" stroke-linecap="round"/><circle cx="56.95" cy="40.89" r="2.5" fill="#F5F2EB"/><circle cx="61.77" cy="34.96" r="2.5" fill="#F5F2EB"/><circle cx="67.25" cy="30.2" r="2.5" fill="#F5F2EB"/><circle cx="50" cy="51" r="6.2" fill="#E39A5C"/><circle cx="80" cy="26" r="7.2" fill="none" stroke="#F5F2EB" stroke-width="2.6"/><circle cx="80" cy="26" r="2.6" fill="#F5F2EB"/><path d="M90.5 10.3 Q91.34 13.66 94.7 14.5 Q91.34 15.34 90.5 18.7 Q89.66 15.34 86.3 14.5 Q89.66 13.66 90.5 10.3Z" fill="#E39A5C"/></svg>
+<div class="brand-tx"><p class="brand-wm"><span class="brand-jul">Jul</span>Controls</p><p class="brand-ds">PROJECT CONTROLS · TENDER TO CLOSE-OUT</p></div>
+</div>
+<div class="cover-main">
+<p class="eyebrow">PORTFOLIO · SUMMARY</p>
+<h1 class="name">Herlan Javier<br>Julio Terceros</h1>
+<div class="rule"></div>
+<p class="role">Project controls · Procurement · Contracts and claims · Tenders</p>
+</div>
+<div class="cover-meta">
+<p class="meta">Energy · Oil &amp; Gas · Healthcare · Telecoms · Public infrastructure</p>
+<p class="meta">Bolivia · Peru · 2007–2026</p>
+</div>
+
+</section></div></figure>
+<figure class="frame" data-n="2"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">PROFILE</p>
+<h2 class="title">Nineteen years turning site reality into auditable numbers</h2>
+</div>
+<div class="split">
+<div class="bio">
+<p class="body">Trained in Petroleum Administration Engineering (UTEPSA, Bolivia), now based in Lima. I plan, control and document projects so that what is bought, built and paid for can be proven: programmes, quantities, supplier orders, interim valuations and change records.</p>
+<p class="body">My track record runs from EPC oil and gas for TotalEnergies, Petrobras, Repsol and YPFB, through hospitals and industrial plants, to Peruvian public infrastructure delivered under the Works-for-Taxes scheme.</p>
+</div>
+<div class="kgrid3">
+<div class="ktile-s rise" style="--i:1"><p class="num-m">19</p><p class="cap">years on industrial and infrastructure projects, 2007–2026</p></div>
+<div class="ktile-s rise" style="--i:2"><p class="num-m">US$180M+</p><p class="cap">of contracts planned and controlled</p></div>
+<div class="ktile-s rise" style="--i:3"><p class="num-m">5,000+</p><p class="cap">activities scheduled in P6 and MS Project</p></div>
+<div class="ktile-s rise" style="--i:4"><p class="num-m">1.69&#160;M</p><p class="cap">direct man-hours controlled on one gas plant</p></div>
+<div class="ktile-s rise" style="--i:5"><p class="num-m">25+</p><p class="cap">tenders and proposals in Bolivia and Peru</p></div>
+<div class="ktile-s rise" style="--i:6"><p class="num-m">6</p><p class="cap">disciplines: civil, mechanical, electrical, I&amp;C, telecoms, commissioning</p></div>
+</div>
+</div>
+<p class="foot">Herlan J. Julio Terceros — Professional portfolio 2026</p>
+
+</section></div></figure>
+<figure class="frame" data-n="3"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">TRACK RECORD · SCALE</p>
+<h2 class="title">Contracts I have planned and controlled</h2>
+<p class="es">Contract value, US$ millions</p></div>
+<div class="bars">
+<div class="brow rise" style="--i:1"><div class="blab"><p class="bt">Incahuasi &amp; Aquio gas plant</p><p class="bs">TECNA – Total · Serpetbol · 2014–16</p></div><div class="btrack"><div class="bar big" style="width:860px"></div><p class="bv">US$75M</p></div></div>
+<div class="brow rise" style="--i:2"><div class="blab"><p class="bt">CPF Margarita camp &amp; civil works</p><p class="bs">Repsol – Técnicas Reunidas · Bolinter · 2011</p></div><div class="btrack"><div class="bar" style="width:688px"></div><p class="bv">US$60M</p></div></div>
+<div class="brow rise" style="--i:3"><div class="blab"><p class="bt">ITU-X1 well and ITU-4 line, EPC</p><p class="bs">Petrobras · Serpetbol · 2012–14</p></div><div class="btrack"><div class="bar" style="width:459px"></div><p class="bv">US$40M</p></div></div>
+<div class="brow rise" style="--i:4"><div class="blab"><p class="bt">Casma video-surveillance system</p><p class="bs">Municipality of Casma · HANSA · 2026</p></div><div class="btrack"><div class="bar" style="width:68px"></div><p class="bv">US$5.9M</p></div></div>
+<div class="brow rise" style="--i:5"><div class="blab"><p class="bt">Illimani LP12 erection, Viacha cement</p><p class="bs">SOBOCE · HG Servicios · 2017–18</p></div><div class="btrack"><div class="bar" style="width:48px"></div><p class="bv">US$4.2M</p></div></div>
+<div class="brow rise" style="--i:6"><div class="blab"><p class="bt">Villa Tunari 3rd-level hospital</p><p class="bs">VAMED · HANSA · 2018–22</p></div><div class="btrack"><div class="bar" style="width:33px"></div><p class="bv">US$2.9M</p></div></div>
+<div class="brow rise" style="--i:7"><div class="blab"><p class="bt">Refinery effluent treatment, phase III</p><p class="bs">YPFB Refinación · Vibrotec · 2016–17</p></div><div class="btrack"><div class="bar" style="width:21px"></div><p class="bv">US$1.8M</p></div></div>
+</div>
+<p class="foot">Source: CV and project records. Casma converted from S/ 20.1 M at S/ 3.40 per US$ (Nov 2026).</p>
+
+</section></div></figure>
+<figure class="frame" data-n="4"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">PLANNING AND CONTROLS</p>
+<h2 class="title">Over 5,000 scheduled activities across six disciplines</h2>
+<p class="es">Programmes on live projects and in tenders</p></div>
+<table class="tbl">
+<tr class="hrow"><th style="width:28%">Project</th><th style="width:36%">Disciplines</th><th style="width:36%">Programme and labour</th></tr>
+<tr><td class="c1">Incahuasi gas plant · TECNA – Total</td><td>Civil, steel structures, equipment, piping, pre-commissioning and commissioning</td><td class="c3">1,777 activities, 5,094 logic links (Level III, P6); 1.69&#160;M direct man-hours</td></tr>
+<tr><td class="c1">LPG spheres EPC · YPFB Refinación</td><td>Civil, piping, electrical, instrumentation, control and safety systems</td><td class="c3">690 activities in an 890-line EPC programme, 2023–2025</td></tr>
+<tr><td class="c1">Trinidad hospital (tender) · HANSA</td><td>Electrical installations</td><td class="c3">1,751-activity tender programme</td></tr>
+<tr><td class="c1">Casma video-surveillance · HANSA</td><td>Structures, architecture, sanitary, electrical and telecoms</td><td class="c3">845 tasks over 210 days; 677 budget items</td></tr>
+<tr><td class="c1">CPF Margarita by-pass · Repsol</td><td>Civil, mechanical and piping, E&amp;I, subcontracts</td><td class="c3">156 activities around a plant shutdown</td></tr>
+<tr><td class="c1">Villa Tunari hospital · VAMED</td><td>Electrical and extra-low-voltage systems</td><td class="c3">132 activities, 13 resources, 3,360 h loaded</td></tr>
+</table>
+<p class="foot">Counts read from the original P6 (.xer) and MS Project (.mpp) files; man-hours from project records.</p>
+
+</section></div></figure>
+<figure class="frame" data-n="5"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">PROCUREMENT · CASE STUDY</p>
+<h2 class="title">Supply control on the Casma project, Peru</h2>
+<p class="es">Peru · Works-for-Taxes public-works project, 2026</p></div>
+<div class="split">
+<div class="cleft">
+<p class="body">Works-for-Taxes project: HANSA funds and builds a public-safety system for the Municipality of Casma (monitoring centre, camera poles, fibre, radio and dispatch) and is repaid in tax-credit certificates.</p>
+<p class="crole">My role: Planning &amp; Control Specialist (Jul 2026), then Valuations &amp; Quality Specialist for the financier (Oct 2026).</p>
+<ul class="blist">
+<li>Purchase-order database that feeds the supply schedule by formula</li>
+<li>Delivery weeks tracked per vendor package: cameras, TETRA radio, GPON and radio links, dispatch software, UPS</li>
+<li>Supplier datasheets used to re-specify the earthing system at no extra cost to the authority</li>
+<li>Monthly valuations with evidence annexes, mapped to the agreement</li>
+</ul>
+</div>
+<div class="kgrid3">
+<div class="ktile-s rise" style="--i:1"><p class="num-m">US$5.9M</p><p class="cap">total project investment</p></div>
+<div class="ktile-s rise" style="--i:2"><p class="num-m">US$2.34M</p><p class="cap">supplies under purchase-order control</p></div>
+<div class="ktile-s rise" style="--i:3"><p class="num-m">104</p><p class="cap">supply items in the procurement plan</p></div>
+<div class="ktile-s rise" style="--i:4"><p class="num-m">297</p><p class="cap">order lines traced across 47 orders</p></div>
+<div class="ktile-s rise" style="--i:5"><p class="num-m">5</p><p class="cap">vendor packages tracked by delivery week</p></div>
+<div class="ktile-s rise" style="--i:6"><p class="num-m">80</p><p class="cap">earthing pits re-specified with supplier data</p></div>
+</div>
+</div>
+<p class="foot">Agreement OxI N° 01-2026-MPC · CUI 2533316 · 22 Jul 2026 – 16 Feb 2027 · US$ at S/ 3.40</p>
+
+</section></div></figure>
+<figure class="frame" data-n="6"><div class="stage"><section>
+<div class="head">
+<p class="eyebrow">CONTRACTS · CLAIM CASE</p>
+<h2 class="title">Claim case: EPC subcontract for a gas plant</h2>
+<p class="es">Bolivia · 2016–2017</p></div>
+<div class="split">
+<div class="cleft">
+<p class="body">Subcontract for civil works, mechanical erection and camps within an EPC gas-plant project. Detailed engineering grew quantities far beyond the basic design tendered, while late client-supplied items and drawings stretched the programme.</p>
+<p class="crole">My role: I prepared the claim end to end and supported it through a four-year arbitration.</p>
+<ul class="blist">
+<li>Built on the contract: change orders, quantity adjustment and extension of time</li>
+<li>As-built Level III programme and critical-path analysis</li>
+<li>Quantity re-measurement by discipline against approved drawings</li>
+<li>Manpower histograms proving the acceleration effort</li>
+<li>Heads of claim: extra quantities, prolonged stay, acceleration, catering, overheads</li>
+</ul>
+</div>
+<div class="cright">
+<div class="kpair">
+<div class="ktile-s rise" style="--i:1"><p class="num-m">989</p><p class="cap">days of programme actually executed</p></div>
+<div class="ktile-s rise" style="--i:2"><p class="num-m">927,360</p><p class="cap">man-hours actually worked from month 19</p></div>
+</div>
+<div class="kpair">
+<div class="ktile-s rise" style="--i:3"><p class="num-m">US$5.09M</p><p class="cap">prolonged stay, US$15,684 a day</p></div>
+<div class="ktile-s rise" style="--i:4"><p class="num-m">US$24.9M</p><p class="cap">total claim value, incl. price adjustment</p></div>
+</div>
+</div>
+</div>
+<p class="foot">Source: claim economic-impact report, Rev. 6 (2017). Figures as claimed.</p>
+
+</section></div></figure>
+<figure class="frame" data-n="7"><div class="stage"><section class="alt">
+<div class="head">
+<p class="eyebrow">TENDERS AND COST</p>
+<h2 class="title">Tendering and cost engineering</h2>
+</div>
+<div class="split">
+<div class="tleft">
+<p class="num-xl">25+</p>
+<p class="cap">tenders and proposals prepared, 2020–2026, for public and private clients</p>
+<div class="divider"></div>
+<p class="label">Clients and authorities tendered</p>
+<p class="cap">YPFB · YPFB Transporte · Aduana Nacional · Municipality of Warnes · Las Lomas steelworks · PTAR Sipe Sipe · GORE Lambayeque · ENOSA · Mina Justa · Quercus wind farm · Nueva Rinconada · Ilo industrial park</p>
+</div>
+<div class="tright">
+<div class="head"><h3 class="ct">AI-assisted tender workflow</h3></div>
+<div class="srow rise" style="--i:1"><p class="snum">01</p><p class="stx"><b>Bid documents:</b> scope, drawings, deadlines and exclusions.</p></div>
+<div class="srow rise" style="--i:2"><p class="snum">02</p><p class="stx"><b>AI extraction:</b> scope, risks, milestones and requirements summarised.</p></div>
+<div class="srow rise" style="--i:3"><p class="snum">03</p><p class="stx"><b>Price base:</b> real supplier quotes, outputs and conditions.</p></div>
+<div class="srow rise" style="--i:4"><p class="snum">04</p><p class="stx"><b>Unit rates and budget:</b> overheads, margin and contingency.</p></div>
+<div class="srow rise" style="--i:5"><p class="snum">05</p><p class="stx"><b>Cash flow:</b> financial S-curve and scenarios.</p></div>
+<div class="srow rise" style="--i:6"><p class="snum">06</p><p class="stx"><b>Offer:</b> technical and economic proposal ready for review.</p></div>
+</div>
+</div>
+<p class="foot">Herlan J. Julio Terceros — Professional portfolio 2026</p>
+
+</section></div></figure>
+<figure class="frame" data-n="8"><div class="stage"><section class="nofoot">
+<div class="head">
+<p class="eyebrow">TECHNICAL FILES AND QUALITY</p>
+<h2 class="title">Multi-discipline engineering and technical files</h2>
+</div>
+<table class="tbl">
+<tr class="hrow"><th style="width:28%">Project</th><th style="width:26%">Client</th><th style="width:46%">What I delivered</th></tr>
+<tr><td class="c1">IESP Independencia, Huaraz (CUI 2194598)</td><td>Regional Govt. of Áncash</td><td>Designer’s point-by-point reply to an equipment-obsolescence request (6 IT items)</td></tr>
+<tr><td class="c1">COAR Amazonas school</td><td>PRONIED, Ministry of Education</td><td>Furniture and equipment diagnostic; tables rebuilt and traced to the 2025 inventory</td></tr>
+<tr><td class="c1">National Archival School (CUI 2571990)</td><td>AGN, Lima</td><td>Design-change modelling, quantities and S10 budget</td></tr>
+<tr><td class="c1">Solar PV for a pharmaceutical plant</td><td>Ilender, Lima</td><td>Technical and financial audit: CAPEX/OPEX, NPV/IRR, risk matrix</td></tr>
+<tr><td class="c1">Villa Albina gates</td><td>A+BIM, Bolivia</td><td>Winning proposal (Nov 2026); quality, HSE, programme and drawings</td></tr>
+</table>
+<p class="cap"><b>Also:</b> Tacna primary and secondary grid update · 100 m³ water tank, Sacaba (Bolivian standards) · Casma–Yaután river channelling file · José Pardo institute close-out dossier</p>
+
+</section></div></figure>
+<figure class="frame" data-n="9"><div class="stage"><section class="nofoot">
+<div class="head">
+<p class="eyebrow">APPLIED AI</p>
+<h2 class="title">Applied AI: how I work with Claude</h2>
+</div>
+<div class="split">
+<div class="aleft">
+<p class="label">How I govern AI work</p>
+<ol class="blist">
+<li>Written rules per deliverable: take-offs, unit rates, specifications, calculation reports and terms of reference.</li>
+<li>No assumed data: every missing input is flagged P1…Pn and closed in a pending-items register.</li>
+<li>AI drafts, cross-checks and traces; it never produces design figures for calculation reports.</li>
+<li>A responsible professional reviews and signs; accountability stays human.</li>
+</ol>
+<p class="cap">Since May 2026, Claude works connected to my project folders, Excel, Word, PDF, MS Project and AutoCAD.</p>
+<p class="cap"><strong>English with AI support.</strong> I understand technical English and use AI tools to translate and write it.</p>
+</div>
+<table class="tbl tbl-half">
+<tr class="hrow"><th style="width:46%">Task done with AI</th><th style="width:54%">Result</th></tr>
+<tr><td class="c1">Design-package review</td><td class="c3">Findings by discipline</td></tr>
+<tr><td class="c1">Drawing updates and drafting</td><td class="c3">Drawings and details in AutoCAD</td></tr>
+<tr><td class="c1">Take-offs and calculations</td><td class="c3">Line-by-line support, reviewed</td></tr>
+<tr><td class="c1">Technical specifications</td><td class="c3">Unified with tracked changes</td></tr>
+<tr><td class="c1">Purchasing database</td><td class="c3">Orders linked to supply schedule</td></tr>
+<tr><td class="c1">Programme updates</td><td class="c3">VBA macros, contract dates fixed</td></tr>
+<tr><td class="c1">Unit rates for tenders</td><td class="c3">Audited unit-rate matrix</td></tr>
+<tr><td class="c1">Technical-financial audits</td><td class="c3">CAPEX/OPEX, NPV/IRR, risks</td></tr>
+</table>
+</div>
+
+</section></div></figure>
+<figure class="frame" data-n="10"><div class="stage"><section class="dark contact">
+<svg class="cover-art" viewBox="0 0 612 824" width="612" height="824" aria-label="Decorative project-controls chart: actual progress reaching the planned finish">
+<rect x="0" y="0" width="612" height="824" rx="24" fill="#1B2F4A"/>
+<g stroke="#2A4263" stroke-width="1">
+<line x1="68" y1="40" x2="68" y2="776"/><line x1="136" y1="40" x2="136" y2="776"/><line x1="204" y1="40" x2="204" y2="776"/><line x1="272" y1="40" x2="272" y2="776"/><line x1="340" y1="40" x2="340" y2="776"/><line x1="408" y1="40" x2="408" y2="776"/><line x1="476" y1="40" x2="476" y2="776"/><line x1="544" y1="40" x2="544" y2="776"/>
+<line x1="40" y1="92" x2="572" y2="92"/><line x1="40" y1="184" x2="572" y2="184"/><line x1="40" y1="276" x2="572" y2="276"/><line x1="40" y1="368" x2="572" y2="368"/><line x1="40" y1="460" x2="572" y2="460"/><line x1="40" y1="552" x2="572" y2="552"/><line x1="40" y1="644" x2="572" y2="644"/>
+</g>
+<line x1="40" y1="776" x2="572" y2="776" stroke="#3A5578" stroke-width="2"/>
+<path d="M48 740 C 250 735, 330 140, 564 100" fill="none" stroke="#C9D3DE" stroke-width="3" stroke-dasharray="10 10" opacity="0.7"/>
+<path d="M48 740 C 245 738, 320 160, 564 104" fill="none" stroke="#E39A5C" stroke-width="7" stroke-linecap="round"/>
+<circle cx="564" cy="104" r="12" fill="#E39A5C"/>
+<circle cx="564" cy="104" r="26" fill="none" stroke="#E39A5C" stroke-width="2" opacity="0.5"/>
+<path d="M596 57 Q597.8 64.2 605 66 Q597.8 67.8 596 75 Q594.2 67.8 587 66 Q594.2 64.2 596 57Z" fill="#E39A5C"/>
+<path d="M120 766 L130 776 L120 786 L110 776 Z" fill="#E39A5C"/>
+<path d="M300 766 L310 776 L300 786 L290 776 Z" fill="#E39A5C"/>
+<path d="M480 766 L490 776 L480 786 L470 776 Z" fill="#E39A5C"/>
+</svg>
+<div class="brand">
+<svg class="brand-ic" viewBox="0 0 100 100" width="88" height="88" aria-label="JulControls"><rect width="100" height="100" rx="22" fill="#22395C"/><path d="M16 78 C 32 78, 40 66, 50 51" fill="none" stroke="#E39A5C" stroke-width="6.5" stroke-linecap="round"/><circle cx="56.95" cy="40.89" r="2.5" fill="#F5F2EB"/><circle cx="61.77" cy="34.96" r="2.5" fill="#F5F2EB"/><circle cx="67.25" cy="30.2" r="2.5" fill="#F5F2EB"/><circle cx="50" cy="51" r="6.2" fill="#E39A5C"/><circle cx="80" cy="26" r="7.2" fill="none" stroke="#F5F2EB" stroke-width="2.6"/><circle cx="80" cy="26" r="2.6" fill="#F5F2EB"/><path d="M90.5 10.3 Q91.34 13.66 94.7 14.5 Q91.34 15.34 90.5 18.7 Q89.66 15.34 86.3 14.5 Q89.66 13.66 90.5 10.3Z" fill="#E39A5C"/></svg>
+<div class="brand-tx"><p class="brand-wm"><span class="brand-jul">Jul</span>Controls</p><p class="brand-tl">Every cost, proven.</p></div>
+</div>
+<div class="cover-main">
+<p class="eyebrow">THANK YOU</p>
+<h1 class="name">Herlan Javier<br>Julio Terceros</h1>
+<div class="rule"></div>
+<p class="role">Open to project controls, procurement and contract-evidence work in Latin America and internationally.</p>
+</div>
+<div class="cgrid3">
+<div class="citem"><p class="clab">EMAIL</p><p class="cval">hjuliojt@gmail.com</p></div>
+<div class="citem"><p class="clab">LANGUAGES</p><p class="cval">Spanish · English (AI-supported)</p></div>
+<div class="citem"><p class="clab">BASED IN</p><p class="cval">Lima, Peru</p></div>
+</div>
+
+</section></div></figure></div>
+<div class="view" id="v-cv-es"><div class="sheet"><div class="cvz cv">
+<div class="top"><div><div class="name">Herlan Javier<br>Julio Terceros</div><div class="title">Especialista en Control de Proyectos y Compras</div><div class="sub">Planificación · Costos · Contratos y reclamos · Licitaciones — EPC oil &amp; gas, industria y obra pública</div></div><div class="contact">Lima, Perú<br>+51 912 146 247<br>hjuliojt@gmail.com<br>linkedin.com/in/herlan-javier-julio-terceros-1aa2b8b2</div></div>
+<div class="grid"><aside class="side"><div class="box"><h2>En cifras</h2><div class="fig"><span class="n">19</span><span class="t">años en proyectos, 2007–2026</span></div><div class="fig"><span class="n">US$180M+</span><span class="t">en contratos planificados y controlados</span></div><div class="fig"><span class="n">5,000+</span><span class="t">actividades programadas en P6 y MS Project</span></div><div class="fig"><span class="n">1.69&#160;M</span><span class="t">horas-hombre directas controladas en una planta de gas</span></div><div class="fig"><span class="n">25+</span><span class="t">licitaciones y propuestas</span></div></div><div class="box"><h2>Competencias</h2><ul><li>Planificación y control: Nivel III, ruta crítica, valor ganado, curvas S</li><li>Compras, control de suministros y proveedores</li><li>Contratos, cambios y reclamos</li><li>Licitaciones, APU y presupuestos</li><li>Valorizaciones, QA/QC y data books</li><li>IA aplicada al control de proyectos</li></ul></div><div class="box"><h2>Especialidades</h2><p>Civil y estructuras · mecánica y piping · eléctrica · instrumentación y control · telecomunicaciones y corrientes débiles · precomisionado y comisionado</p></div><div class="box"><h2>Herramientas</h2><p>Primavera P6 · MS Project · Excel y VBA · Power BI · S10 · AutoCAD · Revit · Navisworks · Autodesk Construction Cloud · SharePoint · Claude (IA)</p></div><div class="box"><h2>Idiomas</h2><p class="lang"><b>Español:</b> nativo</p><p class="lang"><b>Inglés:</b> comprensión técnica; me apoyo en herramientas de IA para traducir y redactar</p></div><div class="box"><h2>Formación</h2><p class="edu"><b>Egresado de Ingeniería en Administración Petrolera</b><br>UTEPSA, Santa Cruz, Bolivia · 2002–2006</p></div><div class="box"><h2>Certificaciones y cursos</h2><ul><li>Especialista Coordinador de Proyectos BIM — ECIC / Autodesk (2022)</li><li>Gestión de proyectos BIM, Autodesk Construction Cloud — ECIC (2022)</li><li>Microsoft Office Specialist: Excel Associate 2019 — Microsoft (2022)</li><li>Costos y presupuestos; dirección de obras con MS Project (2022)</li><li>Rescate de proyectos en crisis, 8 PDU — PMI Santa Cruz (2016)</li><li>Oracle Primavera — Cognos</li><li>Implementación de sistemas de gestión de calidad ISO 9001:2000 — TÜV Rheinland</li></ul></div></aside><div class="main"><section><h2>Perfil</h2><p class="profile">Profesional de planificación, control de proyectos y compras con 19 años en proyectos EPC de petróleo y gas, plantas industriales, hospitales y obra pública en Bolivia y Perú. Planifico, controlo y documento para que lo que se compra, se construye y se paga tenga respaldo: cronogramas, cantidades, órdenes de compra, valorizaciones y registros de cambios. Preparé de principio a fin el reclamo de un subcontrato EPC y lo sostuve durante un arbitraje de cuatro años. Trabajo a diario con IA bajo reglas escritas: sin datos supuestos y con la revisión final de un profesional responsable.</p></section><section><h2>Experiencia profesional</h2><div class="job"><div class="jh"><span class="org">HANSA Limitada Sucursal del Perú</span><span class="date">abr 2026 – actualidad</span></div><div class="place">Lima y Casma, Perú</div><div class="role">Planificación y control de proyectos</div><ul><li>Licitaciones y proyectos EPC: planificación integral, cronograma maestro, ruta crítica, riesgos y reportes ejecutivos.</li><li>Proyecto Casma, Obras por Impuestos (CUI 2533316, US$5.9 M): Especialista en Planificación y Control desde jul 2026 y Especialista en Valorizaciones y Calidad – Entidad Financista desde oct 2026.</li><li>Cronograma de 845 tareas en 210 días y presupuesto de 677 partidas.</li><li>Control de suministros por US$2.34 M: 104 ítems, 47 órdenes de compra y 297 líneas trazadas; 5 paquetes de proveedores seguidos por semana de entrega.</li><li>Revisión del expediente técnico: 188 observaciones por especialidad.</li></ul></div><div class="job"><div class="jh"><span class="org">SEPCON</span><span class="date">oct 2025 – ene 2026</span></div><div class="place">Planta Incahuasi, Chuquisaca, Bolivia</div><div class="role">Planificación y control de obra — EPC y asistencia al comisionado para TotalEnergies</div><ul><li>Cronogramas de paradas de planta e intervención de tie-ins; plan de trabajo de paro de planta.</li><li>Control de avance físico con reportes periódicos.</li></ul></div><div class="job"><div class="jh"><span class="org">Asociación Accidental BOLPEGAS-SERPETROL</span><span class="date">sep 2023 – sep 2025</span></div><div class="place">Cochabamba, Bolivia</div><div class="role">Coordinador de Planificación y Control — Adecuación de esferas de GLP, YPFB Refinación</div><ul><li>Cronograma EPC de 890 líneas y 690 actividades: civil, piping, eléctrica, instrumentación y sistemas de control y seguridad.</li><li>Planillas de avance y facturación con respaldo técnico; reportes de avance físico y financiero.</li></ul></div><div class="job"><div class="jh"><span class="org">BOLPEGAS</span><span class="date">mar 2022 – sep 2023</span></div><div class="place">Tarija, Bolivia</div><div class="role">Coordinador de Planificación y Control — Ampliación de capacidad Planta EPF Margarita, Repsol – YPFB</div><ul><li>Cronogramas de recursos y costos, control de avance físico y financiero, cronogramas de parada de planta y tie-ins.</li></ul></div><div class="job"><div class="jh"><span class="org">HANSA Ltda.</span><span class="date">may 2022 – ago 2022</span></div><div class="place">Santa Cruz, Bolivia</div><div class="role">Consultor de Costos y Presupuestos</div><ul><li>Propuestas técnicas y económicas para licitaciones; cronograma de licitación de 1,751 actividades para instalaciones eléctricas de un hospital (Trinidad).</li></ul></div><div class="job"><div class="jh"><span class="org">HANSA Proyectos &amp; Servicios</span><span class="date">ago 2018 – abr 2022</span></div><div class="place">Villa Tunari, Cochabamba, Bolivia</div><div class="role">Coordinador Residente — Hospital de Tercer Nivel Villa Tunari (VAMED), instalaciones eléctricas y corrientes débiles, US$2.9 M</div><ul><li>Cronograma de 132 actividades y 13 recursos (3,360 h cargadas); coordinación de unas 100 personas.</li><li>Control de contrato, cantidades y compras locales y de importación; coordinación con cliente y supervisión.</li></ul></div><div class="job"><div class="jh"><span class="org">HG Servicios Industriales y Petroleros</span><span class="date">jul 2017 – jul 2018</span></div><div class="place">Viacha, Bolivia</div><div class="role">Coordinador de Planificación y Control — Montaje mecánico Illimani LP12, planta de cemento SOBOCE, US$4.2 M</div><ul><li>Reportes contractuales, medición de avance y conciliación de valorizaciones; gestión de adicionales.</li></ul></div><div class="job"><div class="jh"><span class="org">VIBROTEC / RIO NUEVO</span><span class="date">nov 2016 – jul 2017</span></div><div class="place">Santa Cruz, Bolivia</div><div class="role">Coordinador de Planificación y Control — Efluentes Refinería Guillermo Elder Bell, fase III, YPFB Refinación, US$1.8 M</div><ul><li>Cronogramas civiles y de piping; cantidades previstas contra reales; reclamos y conciliaciones con el cliente.</li></ul></div><div class="job"><div class="jh"><span class="org">SERPETBOL</span><span class="date">may 2012 – sep 2016</span></div><div class="place">Bolivia</div><div class="role">Coordinador de Planificación y Control de Obra</div><ul><li>Planta de gas Incahuasi y Aquío, TECNA – Total (US$75 M, 2014–2016): cronograma Nivel III de 1,777 actividades y 5,094 vínculos en P6; 1.69 M horas-hombre directas.</li><li>EPC pozo ITU-X1 y tramo I del ITU-4, Petrobras (US$40 M, 2012–2014): avance, boletines de medición y certificación.</li></ul></div><div class="job"><div class="jh"><span class="org">Bolinter, Kaiser, Constructora Betanzos y CIS Bolivia</span><span class="date">2007 – 2012</span></div><div class="place">Bolivia</div><div class="role">Planificación y control, QA/QC</div><ul><li>Campamento y obra civil CPF Margarita para Repsol – Técnicas Reunidas (US$60 M) y ampliación EPF Margarita; ductos Dorado X3, Bulo Bulo y Palometas (YPFB Chaco); red primaria Kuljis (YPFB Redes); estación de combustibles Repsol.</li><li>Procedimientos de calidad, trazabilidad de soldadura y data books; participación en la implementación de ISO 9001 en la planta Vuelta Grande.</li></ul></div></section><section><h2>Caso destacado: reclamo de un subcontrato EPC</h2><div class="case">Planta de gas, Bolivia, 2016–2017. Preparé el reclamo completo: base contractual, cronograma ejecutado (989 días), ruta crítica, recómputo de cantidades por especialidad e histogramas de personal (927,360 horas-hombre ejecutadas desde el mes 19). Lo sostuve técnicamente durante un arbitraje de cuatro años.</div></section><p class="refs">Referencias disponibles a solicitud.</p></div></div>
+</div></div></div>
+<div class="view" id="v-cv-en"><div class="sheet"><div class="cvz cv">
+<div class="top"><div><div class="name">Herlan Javier<br>Julio Terceros</div><div class="title">Project Controls &amp; Procurement Specialist</div><div class="sub">Planning · Cost control · Contracts and claims · Tenders — EPC oil &amp; gas, industrial and public works</div></div><div class="contact">Lima, Peru<br>+51 912 146 247<br>hjuliojt@gmail.com<br>linkedin.com/in/herlan-javier-julio-terceros-1aa2b8b2</div></div>
+<div class="grid"><aside class="side"><div class="box"><h2>Key figures</h2><div class="fig"><span class="n">19</span><span class="t">years on projects, 2007–2026</span></div><div class="fig"><span class="n">US$180M+</span><span class="t">of contracts planned and controlled</span></div><div class="fig"><span class="n">5,000+</span><span class="t">activities scheduled in P6 and MS Project</span></div><div class="fig"><span class="n">1.69&#160;M</span><span class="t">direct man-hours controlled on one gas plant</span></div><div class="fig"><span class="n">25+</span><span class="t">tenders and proposals</span></div></div><div class="box"><h2>Core skills</h2><ul><li>Planning and control: Level III, critical path, earned value, S-curves</li><li>Procurement, supply and supplier control</li><li>Contracts, changes and claims</li><li>Tenders, unit rates and budgets</li><li>Valuations, QA/QC and data books</li><li>AI applied to project controls</li></ul></div><div class="box"><h2>Disciplines</h2><p>Civil and structures · mechanical and piping · electrical · instrumentation and control · telecoms and extra-low voltage · pre-commissioning and commissioning</p></div><div class="box"><h2>Tools</h2><p>Primavera P6 · MS Project · Excel and VBA · Power BI · S10 · AutoCAD · Revit · Navisworks · Autodesk Construction Cloud · SharePoint · Claude (AI)</p></div><div class="box"><h2>Languages</h2><p class="lang"><b>Spanish:</b> native</p><p class="lang"><b>English:</b> technical comprehension; I use AI tools to translate and write</p></div><div class="box"><h2>Education</h2><p class="edu"><b>Petroleum Administration Engineering, coursework completed (no degree conferred)</b><br>UTEPSA, Santa Cruz, Bolivia · 2002–2006</p></div><div class="box"><h2>Certifications and courses</h2><ul><li>BIM Project Coordinator Specialist — ECIC / Autodesk (2022)</li><li>BIM project management, Autodesk Construction Cloud — ECIC (2022)</li><li>Microsoft Office Specialist: Excel Associate 2019 — Microsoft (2022)</li><li>Costs and budgets; site management with MS Project (2022)</li><li>Rescuing projects in crisis, 8 PDUs — PMI Santa Cruz (2016)</li><li>Oracle Primavera — Cognos</li><li>ISO 9001:2000 quality-system implementation — TÜV Rheinland</li></ul></div></aside><div class="main"><section><h2>Profile</h2><p class="profile">Project controls and procurement professional with 19 years on EPC oil and gas projects, industrial plants, hospitals and public works in Bolivia and Peru. I plan, control and document projects so that what is bought, built and paid for can be proven: programmes, quantities, purchase orders, interim valuations and change records. I prepared an EPC subcontract claim end to end and supported it through a four-year arbitration. I work with AI every day under written rules: no assumed data, and final review by a responsible professional.</p></section><section><h2>Professional experience</h2><div class="job"><div class="jh"><span class="org">HANSA Limitada Sucursal del Perú</span><span class="date">Apr 2026 – present</span></div><div class="place">Lima and Casma, Peru</div><div class="role">Project planning and control</div><ul><li>Tenders and EPC projects: integrated planning, master programme, critical path, risks and executive reporting.</li><li>Casma Works-for-Taxes project (CUI 2533316, US$5.9M): Planning &amp; Control Specialist from Jul 2026 and Valuations &amp; Quality Specialist for the financier from Oct 2026.</li><li>845-task programme over 210 days and a 677-item budget.</li><li>Supply control of US$2.34M: 104 items, 47 purchase orders and 297 order lines traced; 5 vendor packages tracked by delivery week.</li><li>Design-package review: 188 findings by discipline.</li></ul></div><div class="job"><div class="jh"><span class="org">SEPCON</span><span class="date">Oct 2025 – Jan 2026</span></div><div class="place">Incahuasi plant, Chuquisaca, Bolivia</div><div class="role">Site planning and control — EPC and commissioning support for TotalEnergies</div><ul><li>Plant shutdown and tie-in programmes; shutdown work plan.</li><li>Physical progress control with periodic reports.</li></ul></div><div class="job"><div class="jh"><span class="org">BOLPEGAS-SERPETROL joint venture</span><span class="date">Sep 2023 – Sep 2025</span></div><div class="place">Cochabamba, Bolivia</div><div class="role">Planning and Control Coordinator — LPG spheres upgrade, YPFB Refinación</div><ul><li>890-line EPC programme with 690 activities: civil, piping, electrical, instrumentation, control and safety systems.</li><li>Progress and invoicing sheets with technical evidence; physical and financial progress reports.</li></ul></div><div class="job"><div class="jh"><span class="org">BOLPEGAS</span><span class="date">Mar 2022 – Sep 2023</span></div><div class="place">Tarija, Bolivia</div><div class="role">Planning and Control Coordinator — EPF Margarita plant capacity expansion, Repsol – YPFB</div><ul><li>Resource and cost programmes, physical and financial progress control, shutdown and tie-in programmes.</li></ul></div><div class="job"><div class="jh"><span class="org">HANSA Ltda.</span><span class="date">May 2022 – Aug 2022</span></div><div class="place">Santa Cruz, Bolivia</div><div class="role">Cost and Budget Consultant</div><ul><li>Technical and commercial proposals for tenders, including a 1,751-activity tender programme for a hospital's electrical installations (Trinidad).</li></ul></div><div class="job"><div class="jh"><span class="org">HANSA Proyectos &amp; Servicios</span><span class="date">Aug 2018 – Apr 2022</span></div><div class="place">Villa Tunari, Cochabamba, Bolivia</div><div class="role">Resident Coordinator — Villa Tunari 3rd-level hospital (VAMED), electrical and extra-low-voltage works, US$2.9M</div><ul><li>132-activity programme with 13 resources (3,360 h loaded); coordination of about 100 people.</li><li>Contract, quantity and local and import purchasing control; coordination with client and supervision.</li></ul></div><div class="job"><div class="jh"><span class="org">HG Servicios Industriales y Petroleros</span><span class="date">Jul 2017 – Jul 2018</span></div><div class="place">Viacha, Bolivia</div><div class="role">Planning and Control Coordinator — Illimani LP12 mechanical erection, SOBOCE cement plant, US$4.2M</div><ul><li>Contract reports, progress measurement and valuation reconciliation; management of additional works.</li></ul></div><div class="job"><div class="jh"><span class="org">VIBROTEC / RIO NUEVO</span><span class="date">Nov 2016 – Jul 2017</span></div><div class="place">Santa Cruz, Bolivia</div><div class="role">Planning and Control Coordinator — Guillermo Elder Bell refinery effluent treatment, phase III, YPFB Refinación, US$1.8M</div><ul><li>Civil and piping programmes; planned versus actual quantities; claims and reconciliations with the client.</li></ul></div><div class="job"><div class="jh"><span class="org">SERPETBOL</span><span class="date">May 2012 – Sep 2016</span></div><div class="place">Bolivia</div><div class="role">Site Planning and Control Coordinator</div><ul><li>Incahuasi and Aquío gas plant, TECNA – Total (US$75M, 2014–2016): Level III programme of 1,777 activities and 5,094 logic links in P6; 1.69M direct man-hours.</li><li>ITU-X1 well and ITU-4 line section I EPC, Petrobras (US$40M, 2012–2014): progress, measurement bulletins and certification.</li></ul></div><div class="job"><div class="jh"><span class="org">Bolinter, Kaiser, Constructora Betanzos and CIS Bolivia</span><span class="date">2007 – 2012</span></div><div class="place">Bolivia</div><div class="role">Planning and control, QA/QC</div><ul><li>CPF Margarita camp and civil works for Repsol – Técnicas Reunidas (US$60M) and EPF Margarita expansion; Dorado X3, Bulo Bulo and Palometas pipelines (YPFB Chaco); Kuljis primary gas network (YPFB Redes); Repsol fuel station.</li><li>Quality procedures, weld traceability and data books; took part in ISO 9001 implementation at the Vuelta Grande plant.</li></ul></div></section><section><h2>Highlighted case: EPC subcontract claim</h2><div class="case">Gas plant, Bolivia, 2016–2017. I prepared the full claim: contractual basis, as-built programme (989 days), critical path, quantity re-measurement by discipline and manpower histograms (927,360 man-hours worked from month 19). I provided the technical support through a four-year arbitration.</div></section><p class="refs">References available on request.</p></div></div>
+</div></div></div>
+</main>
+<footer class="foot"><b><i>Jul</i>Controls</b><em data-es="Cada costo, sustentado." data-en="Every cost, proven."></em><span>hjuliojt@gmail.com · Lima</span></footer>
+<script>
+{
+const INTRO={
+ 'portfolio-es':'Portafolio en 10 láminas: montos de contrato, horas-hombre, especialidades y actividades de cronograma.',
+ 'portfolio-en':'Ten-slide portfolio: contract values, man-hours, disciplines and scheduled activities.',
+ 'cv-es':'Currículum vitae en español.',
+ 'cv-en':'Curriculum vitae in English.'
+};
+const views=['portfolio-es','portfolio-en','cv-es','cv-en'];
+let lang='es', view='portfolio';
+try{ if(!(navigator.language||'es').toLowerCase().startsWith('es')) lang='en'; const m=localStorage.getItem('hjt-view'); if(m&&views.includes(m)){[view,lang]=m.split('-');} }catch(e){}
+const h=location.hash.slice(1); if(views.includes(h)){[view,lang]=h.split('-');}
+function fit(){ document.querySelectorAll('.view.on .frame').forEach(f=>{f.querySelector('.stage').style.setProperty('--s',f.clientWidth/1920);}); }
+const ro=new ResizeObserver(fit);
+function render(push){
+ const id=view+'-'+lang;
+ document.documentElement.lang=lang;
+ views.forEach(v=>document.getElementById('v-'+v).classList.toggle('on',v===id));
+ document.querySelectorAll('[data-es]').forEach(e=>e.textContent=e.dataset[lang]);
+ document.getElementById('b-port').setAttribute('aria-pressed',view==='portfolio');
+ document.getElementById('b-cv').setAttribute('aria-pressed',view==='cv');
+ document.getElementById('b-es').setAttribute('aria-pressed',lang==='es');
+ document.getElementById('b-en').setAttribute('aria-pressed',lang==='en');
+ document.getElementById('intro').textContent=INTRO[id];
+ document.title=(view==='cv'?'CV':(lang==='es'?'Portafolio':'Portfolio'))+' — JulControls · Herlan Julio Terceros';
+ if(push&&location.hash.slice(1)!==id) location.hash=id;
+ try{localStorage.setItem('hjt-view',id)}catch(e){}
+ fit();
+}
+document.querySelectorAll('.frame').forEach(f=>ro.observe(f));
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.view;render(true);window.scrollTo({top:0});}));
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;render(true);}));
+window.addEventListener('hashchange',()=>{const x=location.hash.slice(1); if(views.includes(x)){[view,lang]=x.split('-');render(false);}});
+render(false);
+}
+</script>
+</body></html>
